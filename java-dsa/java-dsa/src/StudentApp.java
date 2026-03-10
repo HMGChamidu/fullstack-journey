@@ -1,20 +1,57 @@
+import java.util.Scanner;
+
 public class StudentApp {
     public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
         StudentManager manager = new StudentManager();
-        Student s1 = new Student(1, "Chamidu", 22);
-        Student s2 = new Student(2, "Kasun", 23);
-        Student s3 = new Student(3, "Nimal", 21);
 
-        manager.addStudent(s1);
-        manager.addStudent(s2);
-        manager.addStudent(s3);
+        while(true){
 
-        System.out.println("All Students:");
-        manager.showStudents();
+            System.out.println("\n==== Student Management System ====");
+            System.out.println("1. Add Student");
+            System.out.println("2. Show students");
+            System.out.println("3. Remove student");
+            System.out.println("4. Exit");
 
-        manager.removeStudent(2);
+            System.out.println("Choose option: ");
+            int choice = scanner.nextInt();
 
-        System.out.println("After Removing:");
-        manager.showStudents();
+            switch (choice){
+                case 1:
+                    System.out.println("Enter Student ID");
+                    int id = scanner.nextInt();
+
+                    System.out.println("Enter Student Name");
+                    String name = scanner.next();
+
+                    System.out.println("Enter Age: ");
+                    int age = scanner.nextInt();
+
+                    Student student = new Student(id, name, age);
+                    manager. addStudent(student);
+                    break;
+
+                case 2:
+                    manager.showStudents();
+                    break;
+
+                    case 3:
+                        System.out.println("Enter ID to Remove: ");
+                        int removeID = scanner.nextInt();
+                        manager.removeStudent(removeID);
+                        break;
+
+                case 4:
+                    System.out.println("Exiting program...");
+                    return;
+
+                    default:
+                        System.out.println("Invalid choice");
+
+
+
+            }
+        }
     }
 }
