@@ -1,14 +1,15 @@
 package LibraryManagementSystem;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class LibraryManager {
 
-    private ArrayList<Book> books = new ArrayList<>();
+    private HashMap<String, Book> books = new HashMap<>();
+
 
     //Add book
     public void addBook(Book book) {
-        books.add(book);
+        books.put(book.getBookId(), book);
         System.out.println("Book added.");
     }
 
@@ -21,37 +22,33 @@ public class LibraryManager {
 
         }
 
-        for (Book b : books) {
+        for (Book b : books.values()) {
             b.display();
         }
     }
 
     //search book by ID
     public void searchBook(String id) {
-        for (Book b : books) {
-            if (b.getBookId().equals(id)) {
-                System.out.println("Book found: ");
-                b.display();
-                return;
-            }
+        Book book = books.get(id);
 
+        if (book != null) {
+            System.out.println("Book found: ");
+            book.display();
+        } else {
+            System.out.println("Book not found.");
         }
-        System.out.println("Book not found.");
-
     }
+
 
     //Remove book
     public void removeBook(String id) {
-        for (Book b : books) {
 
-            if (b.getBookId().equals(id)) {
+        if (books.remove(id) != null) {
+            System.out.println("Book removed.");
 
-                books.remove(b);
-                System.out.println("Book removed. ");
-                return;
-            }
+        } else {
+            System.out.println("Book not found.");
         }
-        System.out.println("Book not Found.");
     }
 }
 

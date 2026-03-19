@@ -15,7 +15,7 @@ public class Book {
 
     }
     public void display(){
-        System.out.println("Book ID: " +bookId + "Title: "+ bookTitle + "Auther: "+ bookAuthor);
+        System.out.println("Book ID: " +bookId + " Title: "+ bookTitle + " Auther: "+ bookAuthor);
     }
 
 }

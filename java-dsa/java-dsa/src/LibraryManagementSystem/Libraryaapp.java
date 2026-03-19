@@ -16,7 +16,6 @@ public class Libraryaapp {
             System.out.println("5.Exit");
 
             System.out.print("Choose Option: ");
-
             int choice = scanner.nextInt();
 
             switch (choice){
@@ -24,9 +23,9 @@ public class Libraryaapp {
                     System.out.println("Enter Book ID");
                     String  bookID = scanner.next();
                     System.out.println("Enter Book Title");
-                    String  bookTitle = scanner.next();
+                    String  bookTitle = scanner.nextLine();
                     System.out.println("Enter Book Author");
-                    String  bookAuthor = scanner.next();
+                    String  bookAuthor = scanner.nextLine();
 
                     Book book = new Book(bookID, bookTitle, bookAuthor);
                     manager.addBook(book);
@@ -52,6 +51,9 @@ public class Libraryaapp {
                     System.out.println("Exiting program...");
 
                     return;
+
+                default:
+                    System.out.println("Invalid input");
             }
         }
 
